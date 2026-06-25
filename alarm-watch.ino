@@ -9,11 +9,11 @@
 #define SCREEN_HEIGHT 64
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
-// 📶 WiFi
+//  WiFi
 const char* ssid = "myPC";
 const char* password = "54ML17O7";
 
-// 🌍 MQTT Broker
+//  MQTT Broker
 const char* mqtt_server = "broker.hivemq.com";
 
 WiFiClient espClient;
@@ -23,7 +23,7 @@ PubSubClient client(espClient);
 #define LED_PIN 4
 #define MOTOR_PIN 23
 
-// 🖥 SAFE SCREEN
+//  SAFE SCREEN
 void showSafeScreen() {
   display.clearDisplay();
   display.setTextColor(WHITE);
@@ -39,7 +39,7 @@ void showSafeScreen() {
   display.display();
 }
 
-// 🚨 ALERT SCREEN
+//  ALERT SCREEN
 void showAlertScreen() {
   display.clearDisplay();
   display.setTextColor(WHITE);
@@ -55,7 +55,7 @@ void showAlertScreen() {
   display.display();
 }
 
-// 🔔 When MQTT message arrives
+//  When MQTT message arrives
 void callback(char* topic, byte* payload, unsigned int length) {
   String message = "";
 
@@ -78,7 +78,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
   }
 }
 
-// 📡 Connect WiFi
+// Connect WiFi
 void setup_wifi() {
   WiFi.begin(ssid, password);
   Serial.print("Connecting WiFi");
@@ -91,7 +91,7 @@ void setup_wifi() {
   Serial.println("\nWiFi connected");
 }
 
-// 🔁 MQTT reconnect
+//  MQTT reconnect
 void reconnect() {
   while (!client.connected()) {
     Serial.print("Connecting MQTT...");
